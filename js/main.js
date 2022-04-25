@@ -31,98 +31,38 @@ const searchEl = document.querySelector("#searchEl");
 
 searchEl.addEventListener("keyup",(e) => {
   e.preventDefault()
-  // console.log(searchEl.value);
+  cartList.innerHTML = " "
   let textlarim  = e.target.value.toLowerCase()
   console.log(textlarim); 
 
   
-  // cartItemsArray.forEach(el => {
-  //   Array.from(el.name).forEach((nameitem) => {
-  //     let arrname = nameitem.toLowerCase()
-  //     console.log(arrname);
-  //     cartList.style.display = "none"
-  //     if (arrname == textlarim) {
+  cartItemsArray.forEach(el => {
+    let objname = el.name.toLowerCase()
+    if (objname.includes(textlarim)){
+      bironta(el)
+    }
+    })
+  })
 
-  //       newItems = [];
-  //         function showItems(cartItemsArray) {
-  //           newItems = [];
-  //           cartItemsArray.forEach((item) => {
-  //             let li =` <li class="item-list">
-  //             <p class="item__texts" id="windowfulname">${item.name}</p>
-  //             <p class="item__texts" id="windowemailad">${item.email}</p>
-  //             <p class="item__texts" id="windowNumber">${item.mobile}</p>
-  //             <p class="item__texts" id="windowdepartm">${item.depertment}</p>
-  //             <div>
-  //               <button id="editel" class="button1"  data-bs-toggle="modal"
-  //               data-bs-target="#editModal"  onclick='editCard(${item.id})'><i class='bx bx-edit-alt'></i></button>
-  //               <button id="deleteel" class="button2 deleteel" onclick='DeleteEl(${item.id})'>x</button>
-  //             </div>
-  //         </li>`
-  //         newItems2.push(li);
-  //         });
-  //         searchList.innerHTML = newItems2.join(""); 
-
-  //         }
-  //         showItems(cartItemsArray);
-
-  //     }
-  //     // else if (arrname != textlarim) {
-  //     //   searchList.innerHTML = ""
-  //     // }
-  //   })
-  // })
-
-
-
-
-  // cartList.lastChild.style.backgroundColor = "red"
-  // cartItemsArray.forEach(el => {
-  //   Array.from(el.name).forEach((nameitem) => {
-  //     console.log(nameitem);
-  //   })
-  // })
-
-})
-
-// cartItemsArray.forEach(e => {
-//   console.log(e.name);
-// })
-
-  
-// console.log(cartList);
-// cartList.forEach(i => {
-//   console.log(i);
-// })
-
-
-// cartList.style.display = "none"
-
-
-
-
-// let searchinput = document.querySelector("#search-input")
-// let items = document.querySelectorAll(".items")
-// searchinput.addEventListener("keyup", (e) => {
-//   e.preventDefault()
-//   let textlarim  = e.target.value.toLowerCase()
-
-//   Array.from(items).forEach((item) => {
-//    let aniqla =  item.firstElementChild.textContent
-//    if (aniqla.toLowerCase().indexOf(textlarim) == -1) {
-//     item.style.display = "none"
-//    }
-//    else {
-//     item.style.display = "block"
-//    }
-//   })
-// })
-
-
-
+function bironta (item) {
+  let li = document.createElement("li")
+  li.classList = "item-list"
+  li.innerHTML =`
+    <p class="item__texts" id="windowfulname">${item.name}</p>
+    <p class="item__texts" id="windowemailad">${item.email}</p>
+    <p class="item__texts" id="windowNumber">${item.mobile}</p>
+    <p class="item__texts" id="windowdepartm">${item.depertment}</p>
+    <div>
+      <button id="editel" class="button1"  data-bs-toggle="modal"
+      data-bs-target="#editModal"  onclick='editCard(${item.id})'><i class='bx bx-edit-alt'></i></button>
+      <button id="deleteel" class="button2 deleteel" onclick='DeleteEl(${item.id})'>x</button>
+    </div>
+  `
+  cartList.appendChild(li)
+}
 
 
 let newItems = [];
-
 function showItems(cartItemsArray) {
   newItems = [];
   cartItemsArray.forEach((item) => {
@@ -149,14 +89,16 @@ function showItems(cartItemsArray) {
     </div>
  </li>`
  newItems.push(li);
+
 //  newItems.push(lii);
-// cartList.appendChild(lii)
+//  cartList.appendChild(lii)
 });
 
 // console.log(newItems); 
 // newItems.forEach(ell => {
+//   console.log(ell);
 //   // console.log(ell);
-//   cartList.appendChild(ell)
+//   // cartList.appendChild(ell)
 // })
 // console.log(cartList);
 
@@ -165,7 +107,6 @@ cartList.innerHTML = newItems.join("");
 }
 showItems(cartItemsArray);
 
-  
 
 let btndetails = document.querySelectorAll(".btndetails")
 let details = document.querySelector("#details2")
@@ -268,31 +209,29 @@ function DeleteEl(elId) {
 
 
 
-email.addEventListener("keyup",(e) => {
+exampleInputEmail1.addEventListener("keyup",(e) => {
   e.preventDefault()
   console.log("hi");
-  email.classList.add("borderred")
+  exampleInputEmail1.classList.add("borderred")
 
-  if (email.value.match(/[@]/) != null) {
-    email.classList.remove("borderred")
-  }
-  // if (telnum.value.length)
-  
-})
-telnum.addEventListener("keyup",(e) => {
-  e.preventDefault()
-  telnum.classList.add("borderred")
-  if (telnum.value.length > 8) {
-    telnum.classList.remove("borderred")
-  }
-})
-fullname.addEventListener("keyup",(e) => {
-  e.preventDefault()
-  if (fullname.value == "") {
-    fullname.classList.add("borderred")
-  }
-  else if (fullname.value != "") {
-    fullname.classList.remove("borderred")
+  if (exampleInputEmail1.value.match(/[@]/) != null) {
+    exampleInputEmail1.classList.remove("borderred")
   }
 })
 
+exampleInputTel1.addEventListener("keyup",(e) => {
+  e.preventDefault()
+  exampleInputTel1.classList.add("borderred")
+  if (exampleInputTel1.value.length > 8) {
+    exampleInputTel1.classList.remove("borderred")
+  }
+})
+exampleInputName1.addEventListener("keyup",(e) => {
+  e.preventDefault()
+  if (exampleInputName1.value == "") {
+    exampleInputName1.classList.add("borderred")
+  }
+  else if (exampleInputName1.value != "") {
+    exampleInputName1.classList.remove("borderred")
+  }
+})
