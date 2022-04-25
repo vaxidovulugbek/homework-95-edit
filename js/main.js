@@ -296,4 +296,3 @@ fullname.addEventListener("keyup",(e) => {
   }
 })
 
-
