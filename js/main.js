@@ -1,12 +1,75 @@
 let cartItemsArray = [
   {
     id: 1,
-    name: "Ulugbek",
+    name: "ulugbek",
     email:"ulugbek@gmail.com",
     mobile:99890987865,
     depertment:"HR"
   },
+  {
+    id: 2,
+    name: "avakhidov",
+    email:"vaxidov@gmail.com",
+    mobile:19890987865,
+    depertment:"HR"
+  },
 ];
+
+
+let count = 0
+let count2 = 0
+const windowfulname = document.querySelector("#windowfulname")
+const windowNumber = document.querySelector("#windowNumber")
+windowfulname.addEventListener("click",(e) => {
+  e.preventDefault()
+  if (count % 2 == 0) {
+    cartItemsArray.sort((a, b) => {
+      if(a.name > b.name) {
+        return 1
+      }
+      if(a.name < b.name) {
+        return -1
+      }
+      return 0
+      
+    });
+    count++
+  }
+  else if (count % 2 != 0) {
+    cartItemsArray.sort((a, b) => {
+      if(a.name < b.name) {
+        return 1
+      }
+      if(a.name > b.name) {
+        return -1
+      }
+      return 0
+      
+    });
+    count++
+  }
+  
+    showItems(cartItemsArray)
+    // editCard(elId)
+})
+
+windowNumber.addEventListener("click",(e) => {
+  e.preventDefault()
+  if (count2 % 2 == 0) {
+    cartItemsArray.sort((a, b) => a.mobile - b.mobile)
+    count2++
+  }
+  else if (count2 % 2 != 0) {
+    cartItemsArray.sort((a, b) => b.mobile - a.mobile)
+    count2++
+  }
+    showItems(cartItemsArray)
+    // editCard(elId)
+  })
+
+
+// cartItemsArray.sort(dynamicSort("Name"))
+// console.log(cartItemsArray);
 
 
 const cartList = document.querySelector("#list");
@@ -28,6 +91,10 @@ const inputMobileEdit = document.querySelector("#inputMobileEdit");
 
 const searchForm = document.querySelector("#searchForm");
 const searchEl = document.querySelector("#searchEl");
+
+const detailssummari = document.querySelector("#detailssummari")
+
+// ================================ SEARCH PART ====================================
 
 searchEl.addEventListener("keyup",(e) => {
   e.preventDefault()
@@ -61,6 +128,7 @@ function bironta (item) {
   cartList.appendChild(li)
 }
 
+// ================================ END OF SEARCH PART ====================================
 
 let newItems = [];
 function showItems(cartItemsArray) {
@@ -107,7 +175,6 @@ cartList.innerHTML = newItems.join("");
 }
 showItems(cartItemsArray);
 
-
 let btndetails = document.querySelectorAll(".btndetails")
 let details = document.querySelector("#details2")
 let a = ""
@@ -115,6 +182,7 @@ btndetails.forEach(item => {
   item.addEventListener("click",(w) => {
     // console.log(w.target.textContent);
     a = w.target.textContent
+    detailssummari.textContent = a
     // a.toUpperCase
     details.removeAttribute("open");
   })
@@ -235,3 +303,6 @@ exampleInputName1.addEventListener("keyup",(e) => {
     exampleInputName1.classList.remove("borderred")
   }
 })
+
+
+

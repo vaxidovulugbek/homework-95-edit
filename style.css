@@ -197,20 +197,24 @@ body {
 .modal-infos {
   font-size: 18px;
 }
-.form-check2 {
+/* .form-check2 {
   margin-top: 100px;
-}
+} */
 .submitbtn {
   padding: 9px 22px;
   border: none;
   background-color: #333996;
   color: #fff;
   border-radius: 6px;
-  font-size: 19px;
+  font-size: 16px;
   transition: all 0.3s ease;
 }
 .submitbtn:hover{
   background-color: #1f2469;
+}
+.dateinput {
+  width: 86% !important;
+  margin-top: 90px;
 }
 
 /* ================================================= */
@@ -221,14 +225,17 @@ body {
   align-items: center;
   justify-content: space-between;
   position: absolute;
-  right: 90px;
-  top: 220px;
+  right: 83px;
+  top: 214px;
+  z-index: 5;
 }
+
 .summary {
-  padding: 16px;
+  padding: 15px;
   background-color: transparent;
   border: 1px solid #C4C4C4;
   border-radius: 6px;
+  /* z-index: 5; */
 }
 .details-select {
   position: relative;
@@ -256,8 +263,13 @@ body {
 .d-flex {
   display: flex;
 }
+.item__btn {
+  cursor: pointer;
+}
 
-
+.borderred {
+  border: 2px solid red !important;
+}
 
 .button1 {
   border: none;
