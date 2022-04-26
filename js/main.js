@@ -91,8 +91,8 @@ const inputMobileEdit = document.querySelector("#inputMobileEdit");
 
 const searchForm = document.querySelector("#searchForm");
 const searchEl = document.querySelector("#searchEl");
-
 const detailssummari = document.querySelector("#detailssummari")
+
 
 // ================================ SEARCH PART ====================================
 
@@ -169,9 +169,15 @@ function showItems(cartItemsArray) {
 //   // cartList.appendChild(ell)
 // })
 // console.log(cartList);
-
+// ====================================== overflow scroll ===============================
 cartList.innerHTML = newItems.join(""); 
-
+cartItemsArray.forEach(item => {
+  console.log(cartItemsArray.length);
+  if (cartItemsArray.length > 3) {
+    cartList.classList.add("height")
+  }
+})
+// ======================================================================================
 }
 showItems(cartItemsArray);
 

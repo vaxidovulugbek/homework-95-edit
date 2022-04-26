@@ -121,6 +121,14 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
+  height: auto;
+  overflow-y: scroll;
+}
+.height {
+  height: 300px !important;
+}
+.list::-webkit-scrollbar{
+  width: 0; 
 }
 #searchList {
   padding: 0;
